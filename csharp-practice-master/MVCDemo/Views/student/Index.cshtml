@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MVCDemo.Models.student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @using (Html.BeginForm())
+    {
+    <b>Search by</b>
+    @Html.RadioButton("searchby", "Name", true) <b>Name</b>
+    @Html.RadioButton("searchby", "Age") <b>Age</b>
+    @Html.RadioButton("searchby", "City") <b>City</b>
+    <br />
+    @Html.TextBox("search") <input type="submit" name="search" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalmarks)
+        </th>
+        <th></th>
+    </tr>
+
+@if (Model.Count() == 0) { 
+    <tr>
+        <td colspan="5">No records found</td>
+    </tr>
+}
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalmarks)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

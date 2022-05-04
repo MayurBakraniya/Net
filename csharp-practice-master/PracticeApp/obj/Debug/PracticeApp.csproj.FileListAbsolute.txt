@@ -1,0 +1,8 @@
+C:\Users\vicky\Desktop\csharp\PracticeApp\bin\Debug\PracticeApp.exe.config
+C:\Users\vicky\Desktop\csharp\PracticeApp\bin\Debug\PracticeApp.exe
+C:\Users\vicky\Desktop\csharp\PracticeApp\bin\Debug\PracticeApp.pdb
+C:\Users\vicky\Desktop\csharp\PracticeApp\obj\Debug\PracticeApp.csproj.AssemblyReference.cache
+C:\Users\vicky\Desktop\csharp\PracticeApp\obj\Debug\PracticeApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\vicky\Desktop\csharp\PracticeApp\obj\Debug\PracticeApp.csproj.CoreCompileInputs.cache
+C:\Users\vicky\Desktop\csharp\PracticeApp\obj\Debug\PracticeApp.exe
+C:\Users\vicky\Desktop\csharp\PracticeApp\obj\Debug\PracticeApp.pdb

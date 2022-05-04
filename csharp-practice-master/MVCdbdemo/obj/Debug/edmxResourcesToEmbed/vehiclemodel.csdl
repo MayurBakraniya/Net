@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vehiclesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="companyID" />
+    </Key>
+    <Property Name="companyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="companyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="models" Relationship="Self.FK_models_companies" FromRole="companies" ToRole="models" />
+  </EntityType>
+  <EntityType Name="model">
+    <Key>
+      <PropertyRef Name="modelID" />
+    </Key>
+    <Property Name="modelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="modelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="companyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="company" Relationship="Self.FK_models_companies" FromRole="models" ToRole="companies" />
+  </EntityType>
+  <Association Name="FK_models_companies">
+    <End Role="companies" Type="Self.company" Multiplicity="1" />
+    <End Role="models" Type="Self.model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="companies">
+        <PropertyRef Name="companyID" />
+      </Principal>
+      <Dependent Role="models">
+        <PropertyRef Name="companyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="vehiclesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="companies" EntityType="Self.company" />
+    <EntitySet Name="models" EntityType="Self.model" />
+    <AssociationSet Name="FK_models_companies" Association="Self.FK_models_companies">
+      <End Role="companies" EntitySet="companies" />
+      <End Role="models" EntitySet="models" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
